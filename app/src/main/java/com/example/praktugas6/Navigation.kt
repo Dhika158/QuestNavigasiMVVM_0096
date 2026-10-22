@@ -3,6 +3,10 @@ package com.example.praktugas6
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -20,6 +24,10 @@ enum class Navigation {
 fun DataApp(
     navController: NavHostController = rememberNavController()
 ){
+    var nama by remember { mutableStateOf("") }
+    var jenisKelamin by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
@@ -28,13 +36,19 @@ fun DataApp(
         ){
             composable(route = Navigation.FormulirSaya.name) {
                 FormIsian(
-                    OnSubmitBtnClick = {
+                    OnSubmitBtnClick = { n, j, a ->
+                        nama = n
+                        jenisKelamin = j
+                        alamat = a
                         navController.navigate(Navigation.Detail.name)
                     }
                 )
             }
             composable(route = Navigation.Detail.name) {
                 TampilData(
+                    nama = nama.ifEmpty { "Contoh Nama" },
+                    jenisKelamin = jenisKelamin.ifEmpty { "Lainnya" },
+                    alamat = alamat.ifEmpty { "Yogyakarta" },
                     onBackBtnClick = { cancelAndBackToFormulirSaya(navController) }
                 )
             }

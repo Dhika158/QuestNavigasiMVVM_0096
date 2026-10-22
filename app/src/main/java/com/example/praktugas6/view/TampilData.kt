@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,12 +26,15 @@ import com.example.praktugas6.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    onBackBtnClick: () -> Unit,
+    nama: String = "Contoh Nama",
+    jenisKelamin: String = "Lainnya",
+    alamat: String = "Yogyakarta",
+    onBackBtnClick: () -> Unit = {},
 ){
     val item = listOf(
-        Pair(stringResource(id = R.string.nama_lengkap),"Contoh Nama"),
-        Pair(stringResource(id = R.string.jenis_kelamin),"Lainnya"),
-        Pair(stringResource(id = R.string.alamat),"Yogyakarta")
+        Pair(stringResource(id = R.string.nama_lengkap), nama),
+        Pair(stringResource(id = R.string.jenis_kelamin), jenisKelamin),
+        Pair(stringResource(id = R.string.alamat), alamat)
     )
     Scaffold(modifier = Modifier,
         topBar = {
@@ -41,14 +43,14 @@ fun TampilData(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = colorResource(id = R.color.teal_700))
             )
         }){isiRuang ->
-        Column(modifier = Modifier.padding(paddingValues = isiRuang),
-            verticalArrangement = Arrangement.SpaceBetween){
-            item.forEach {item ->
-                Column{
-                    Text(text = item.first.uppercase(), fontSize = 16.sp)
-                    Text(text = item.second, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Cursive, fontSize = 22.sp)
+        Column(modifier = Modifier.padding(paddingValues = isiRuang).padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)){
+            item.forEach {dataItem ->
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)){
+                    Text(text = dataItem.first.uppercase(), fontSize = 13.sp, color = Color.Gray)
+                    Text(text = dataItem.second, fontWeight = FontWeight.Bold, fontSize = 18.sp)
                 }
-                HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
+                HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
             }
             Spacer(modifier = Modifier.height(10.dp))
             Button(
