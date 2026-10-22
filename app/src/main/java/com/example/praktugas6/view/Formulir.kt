@@ -31,3 +31,21 @@ fun FormIsian(
                     containerColor = Color.Resource(id = R.color.teal_700)
                 )
             ) }
+    ){ isiRuang ->
+        Column(
+            modifier = Modifier.padding(paddingValues = isiRuang),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            OutlineTextfield(
+                velue = "",
+                singleLine = true,
+                modfier = Modifier
+                    .padding(top = 20.dp)
+                    .width(250.dp),
+                label = {Text(text = "Nama Lengkap")},
+                onValueChange = {},
+            )
+        }
+
+    }
+}
