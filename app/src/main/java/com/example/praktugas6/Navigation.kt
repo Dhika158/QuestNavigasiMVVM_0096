@@ -18,15 +18,27 @@ fun  DataApp(
             navController = navController,
             startDestination = Navigation.FormulirSaya.name,
 
-            modifier = Modifier.padding(paddingValues = isiRuang){
-                composable(route = Navigation.FormulirSaya.name){
-                    Formisian (
+            modifier = Modifier.padding(paddingValues = isiRuang) {
+                composable(route = Navigation.FormulirSaya.name) {
+                    Formisian(
                         onSubmitBtnClick = {
                             navController.navigate(Navigation.Detail.name)
                         }
 
                     )
                 }
+                composable(route = Navigation.Detail.name) {
+                    TampilData(
+                        onBackBtnClick = { cancelAndBackToFormulirSaya(navController) }
+                    )
+                }
             }
+
     }
+}
+
+private fun cancelAndBackToFormulirSaya(
+    navController: NavHostController
+){
+    navController.popBackStack(route = Navigasi.FormulirSaya.name, inclusiven = false)
 }
