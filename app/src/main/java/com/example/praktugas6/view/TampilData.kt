@@ -27,9 +27,11 @@ fun TampilData(
             item.forEach {item ->
                 Column{
                     Text(text = item.first.uppercase(), fonSize = 16.dp)
-                    Text(text = item.second)
+                    Text(text = item.second, fontweight = FontWeight.Bold, fontFamily = FontFamily.Cursive, fontSize = 22.dp)
                 }
+                HorizontalDivider(thickness = 1.dp, color = Color.Cyam)
             }
+
         }
 
 }
