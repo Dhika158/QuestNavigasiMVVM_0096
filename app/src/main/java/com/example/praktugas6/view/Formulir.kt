@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.R
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -49,7 +50,13 @@ fun FormIsian(
                 .padding(all = 20.dp)
                 .width(250.dp), thickness = Thickness,color = Color.Red)
             Row{
-                jenisK
+                jenisK.forEach {
+                    RadioButton(
+                        selected = false,
+                        onClick = {item}
+                    )
+                    Text(text = item)
+                }
             }
 
         }
