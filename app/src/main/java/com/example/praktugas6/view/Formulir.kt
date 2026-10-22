@@ -21,3 +21,13 @@ import androidx.compose.ui.res.stringResource
 fun FormIsian(
     jenisK:List<String> = Listof("Laki-Laki","Perempuan"),
     OnSubmitBtnClick : () -> Unit
+) {
+    Scaffold(
+        modifier = Modifier,
+        topbar = {
+            TopAppBar(
+                tittle = {Text(stringResource(id = R.string.home), color = Color.White)},
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = Color.Resource(id = R.color.teal_700)
+                )
+            ) }
