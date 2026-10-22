@@ -1,5 +1,6 @@
 package com.example.praktugas6.view
 
+import android.R.attr.button
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.praktugas6.R
+import kotlinx.coroutines.awaitAll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -85,7 +87,11 @@ fun FormIsian(
         Spacer(modifier = Modifier.height(30.dp))
         button(
             modifier = Modifier.fillMaxWidth(fraction = if)
-        )
+                .padding(all = 25.dp),
+            onClick = OnSubmitBtnClick
+        ){
+            Text(stringResource(id = R.string.submit)))
+        }
 
     }
 }
