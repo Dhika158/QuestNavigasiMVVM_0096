@@ -24,7 +24,12 @@ fun TampilData(
         }){isiRuang ->
         Column(modifier = Modifier.padding(paddingValues = isiRuang),
             verticalArrangement = Arrangement.SpaceBetween){
-
+            item.forEach {item ->
+                Column{
+                    Text(text = item.first.uppercase(), fonSize = 16.dp)
+                    Text(text = item.second)
+                }
+            }
         }
 
 }
